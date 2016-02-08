@@ -60,7 +60,7 @@ theoretical_mean <-
         1/lambda
 
 hist(mns, 
-     breaks = 25,
+     breaks = 50,
      prob = TRUE,
      main = "Simulation of Exponential Distribution", 
      xlab = "Spread")
@@ -90,14 +90,14 @@ theoretical_variance <-
 x_values <-
         seq(min(mns), 
             max(mns), 
-            length = 25)
+            length = 50)
 y_values <- 
         dnorm(x_values, 
               mean = 1/lambda, 
               sd = 1/lambda/sqrt(40))
 
 hist(mns, 
-     breaks = 25,
+     breaks = 50,
      prob = TRUE,
      main = "Exponential Distribution Comparison",
      xlab = "Spread")
