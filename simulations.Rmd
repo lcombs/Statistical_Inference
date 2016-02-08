@@ -74,7 +74,7 @@ legend("topright",
        col = c("red", "blue"))
 ```
 
-As the plot shows, the sample mean (`r sample_mean`) and theoretical mean (`r theoretical_mean`) are close to one another. We can already start to see that the plot looks approximately normal.
+As the plot shows, the sample mean (`r sample_mean %>% round(., 3)`) and theoretical mean (`r theoretical_mean`) are close to one another. We can already start to see that the plot looks approximately normal.
 
 ## Sample Variance versus Theoretical Variance 
 
@@ -112,7 +112,7 @@ legend("topright",
        col = c("red", "blue"))
 ```
 
-As the plot shows, the sample distribution and theoretical distribution possess simular shapes. The density functions make it easier to compare the distributions holistically. The variance of the sample is `r sample_variance`; while the theoretical variance is `r theoretical_variance`.
+As the plot shows, the sample distribution and theoretical distribution possess simular shapes. The density functions make it easier to compare the distributions holistically. The variance of the sample is `r sample_variance %>% round(., 3)`; while the theoretical variance is `r theoretical_variance`.
 
 ## Distribution is approximately normal.
 
