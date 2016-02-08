@@ -85,3 +85,4 @@ Assume the dose is 2: `r t_test_function(ToothGrowth[dose == 2])`
 ## 4. State your conclusions and the assumptions needed for your conclusions.
 
 In conclusion, the first t-test shows that if we disregard dose, there is no difference between the two supplements. However, in the graph, we saw there appeared to be a rather large difference between the two populations when we take into account dose. In particular, we find significant differences between those within the population who took a dose of .5 or 1, but no significant difference for those who took a dose of 2. In computing these intervals, we assume that the variances are equal because the subpopulations within each test group are the same. We perform a t-test so we also assume the population distributions are approximately normal and that samples are independent of each other. We assume the experiment was carried out and the data was gathered so these assumptions would be met.
+

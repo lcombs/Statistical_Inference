@@ -16,6 +16,7 @@ I will:
 3. Show that the distribution is approximately normal.
 
 
+
 ```{r}
 library(magrittr)
 ```
