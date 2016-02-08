@@ -1,0 +1,87 @@
+---
+title: 'Statistical Inference Course Project: Part 2'
+author: "lcombs"
+date: "02/05/2016"
+output: pdf_document
+---
+
+# Investigating Tooth Growth:
+
+## 1. Load the ToothGrowth data and perform some basic exploratory analyses.
+
+```{r}
+library(magrittr)
+
+library(datasets)
+data(ToothGrowth) 
+
+library(data.table)
+ToothGrowth <- 
+        ToothGrowth %>%
+        as.data.table()
+
+head(ToothGrowth)
+str(ToothGrowth)
+```
+
+
+## 2. Provide a basic summary of the data.
+
+```{r}
+library(ggplot2)
+
+summary(ToothGrowth)
+
+ggplot(ToothGrowth, 
+       aes(x = dose  %>% as.factor(), 
+           y = len, 
+           fill = dose  %>% as.factor())) +
+        geom_boxplot() +
+        facet_grid(. ~ supp) +
+        ggtitle("Tooth Growth by Supplement and Dosage") + 
+        xlab("Dosage (mg)") + 
+        ylab("Tooth Length") + 
+        guides(fill = guide_legend(title = "Dosage"))
+```
+
+## 3. Compare tooth growth by supp and dose. 
+
+###  We will assume equal variance because we have an equal number of data points within each subgroup.
+
+```{r}
+t_test_function <- 
+        function(dataset = ToothGrowth){
+                t_test <- 
+                        t.test(len ~ supp, 
+                               paired = FALSE, 
+                               var.equal = TRUE, 
+                               data = dataset)
+                paste0("The p-value is ", 
+                       t_test$p.value  %>% 
+                               round(., 3), 
+                       ". The 95% confidence interval is between ", 
+                       t_test$conf.int[1] %>% 
+                               round(., 2), 
+                       " and ", 
+                       t_test$conf.int[2] %>% 
+                               round(., 2), 
+                       ".")
+                
+        }
+```
+
+Regardless of dose: `r t_test_function()`
+
+### Overall, there does not seem to be a significant difference, but we should try comparing within different doses.
+
+
+Assume the dose is 0.5: `r t_test_function(ToothGrowth[dose == .5])`
+
+Assume the dose is 1: `r t_test_function(ToothGrowth[dose == 1])`
+
+Assume the dose is 2: `r t_test_function(ToothGrowth[dose == 2])`
+
+
+## 4. State your conclusions and the assumptions needed for your conclusions.
+
+In conclusion, the first t-test shows that if we disregard dose, there is no difference between the two supplements. However, in the graph, we saw there appeared to be a rather large difference between the two populations when we take into account dose. In particular, we find significant differences between those within the population who took a dose of .5 or 1, but no significant difference for those who took a dose of 2. In computing these intervals, we assume that the variances are equal because the subpopulations within each test group are the same. We perform a t-test so we also assume the population distributions are approximately normal and that samples are independent of each other. We assume the experiment was carried out and the data was gathered so these assumptions would be met.
