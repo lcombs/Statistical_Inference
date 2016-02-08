@@ -124,3 +124,5 @@ qqline(mns,
 ```
 
 The q-q plot above shows the difference between the sample distribution and the normal distribution. Here, we can see that the theoretical and observed quartiles are very similar. The sample difference most at the ends where in both cases the points are  larger than what we would expect from a perfectly normal distribution.
+
+*** Note that the project can be found at: https://github.com/lcombs/Statistical_Inference
