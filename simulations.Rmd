@@ -10,12 +10,11 @@ output: pdf_document
 ## Overview
 
 In this project, I will investigate the exponential distribution in R and compare it with the Central Limit Theorem. The results will illustrate via simulation the properties of the distribution of the mean of the exponentials. 
+
 I will:
 1. Show the sample mean and compare it to the theoretical mean of the distribution.
 2. Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
 3. Show that the distribution is approximately normal.
-
-
 
 ```{r}
 library(magrittr)
@@ -24,7 +23,6 @@ library(magrittr)
 ## Simulations
 
 In order to carry out the simulations, we set lambda equal to .02. We will carry out 1,000 simulations by collecting the mean of 40 exponentials each time. The resulting means are saved to the variable mns.
-
 
 ```{r}
 lambda <- 
